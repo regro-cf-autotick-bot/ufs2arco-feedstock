@@ -2,14 +2,14 @@ schema_version: 1
 
 context:
   name: ufs2arco
-  version: "0.19.0"
+  version: "0.19.1"
   # Default nompi to "mpi" unless specified otherwise
   nompi: ${{ nompi | default("mpi") }}
   with_mpi: ${{ nompi == "mpi" }}
   # Increment build_base for new builds of the same version
   build_base: 1
   # MPI builds get an offset of 100
-  build_number: ${{ build_base + 100 if with_mpi else build_base }}
+  build_number: 0
   # Define the prefix string for the build string
   mpi_prefix: ${{ "mpi" if with_mpi else "nompi" }}
 
@@ -19,7 +19,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/ufs2arco-${{ version }}.tar.gz
-  sha256: f082edafaf873534c3d17d4a90897b130baee5d9ec2b1137c6ba8c5dd6545878
+  sha256: 0ebc35264752051b6e78a3f188f04cfeaaaef86939e12562c06f66b205f0ec7b
 
 build:
   number: ${{ build_number }}
